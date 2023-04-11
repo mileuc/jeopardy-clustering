@@ -29,11 +29,21 @@ To recap, we have the following validation metrics for each model:
 
 Overall, our K-Means model has the best validation matrics - the silhouette score of 0.779 indicates highly dense clustering and is excellent, especially considering that I am using the entire dataset. The Calinski-Harabasz score of 747317.65 is by far the highest-ranked and K-Means also has the best Davies-Bouldin index at 0.52 (closest to 0) which indicates a better partition and less similarity compared to the other models. From manually checking a cluster, it is encouraging that the cluster had questions on various types of history and literature.
 
+![](k-means-cluster-category-pie.png)
+
 Our Gaussian Mixture model produced one of the lowest silhouette scores, but at 0.636 it is still a quality cluster since it is over 0.5, especially considering that the entire dataset is being used. The model had the second-best Calinski-Harabasz score at 301526.41, indicating that the model has better defined clusters compared to DBSCAN and Agglomerative. The Davies-Bouldin index of 1.48 was the lowest though, indicating that the clusters are somewhat similar. From manually checking a cluster, I was glad to see that a decent number of clues were based off questions with "body" or "bodies" as a keyword, which resulted in anatomy or bodies of water categories being prominent.
+
+![](gmm-cluster-category-pie.png)
 
 The DBSCAN model produced the best silhouette score at 0.802, the third-best Calinski-Harabasz score at 30609.66, and the second-worst Davies-Bouldin score of 1.43. Keep in mind that these results were produced with a sample of 50000 questions instead of the full dataset, due to time and memory contraints. Manually, the questions from the cluster I checked did not look similar - the topics and official categories are quite varied. The only thing I could possibly say are similar are the length of the questions - they seem shorter, direct, and to-the-point. The manual check of the DBSCAN cluster did not really correlate with the silhouette score results that were produced.
 
+![](dbscan-cluster-category-pie.png)
+
 Finally, the Agglomerative model produced the worst results overall (despite only having a sample of 10000) as it had the worst silhouette score at 0.546 (but still a decent number since it is over 0.5), the worst Calinski-Harabasz score by far at only 10498.91, and a decent Davies-Bouldin index at 0.67. Also, the two clusters I checked looked quite similar - both were quite varied as Sports were the leading categories for both clusters, but not by much. There seems to be a little bit of everything in each cluster, and there wasn't much distinguishing the two.
+
+![](agglomerative-cluster-category-pie-1.png)
+
+![](agglomerative-cluster-category-pie-2.png)
 
 Using these results, let's interpret my original question from my project proposal: Using the clustering models learned in ENSF 611, experiment and explore how effective each of them are in clustering clues from the game show Jeopardy! based on the keywords used in each clue.
 
